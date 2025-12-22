@@ -1,7 +1,7 @@
 package com.undefiend.hospitalManagement;
 
 import com.undefiend.hospitalManagement.entity.Patient;
-import com.undefiend.hospitalManagement.entity.dto.BloodGroupCountResponseEntity;
+import com.undefiend.hospitalManagement.dto.BloodGroupCountResponseEntity;
 import com.undefiend.hospitalManagement.entity.type.BloodGroupType;
 import com.undefiend.hospitalManagement.repository.PatientRepository;
 import com.undefiend.hospitalManagement.service.PatientService;

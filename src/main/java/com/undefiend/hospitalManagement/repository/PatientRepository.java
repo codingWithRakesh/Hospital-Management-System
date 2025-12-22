@@ -1,7 +1,7 @@
 package com.undefiend.hospitalManagement.repository;
 
 import com.undefiend.hospitalManagement.entity.Patient;
-import com.undefiend.hospitalManagement.entity.dto.BloodGroupCountResponseEntity;
+import com.undefiend.hospitalManagement.dto.BloodGroupCountResponseEntity;
 import com.undefiend.hospitalManagement.entity.type.BloodGroupType;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -37,7 +37,7 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
     List<Object[]> counteachBloodGroupType();
 
     //problem
-    @Query("SELECT new com.undefiend.hospitalManagement.entity.dto.BloodGroupCountResponseEntity(p.bloodGroupType," + " Count(p)) FROM Patient p GROUP BY p.bloodGroupType")
+    @Query("SELECT new com.undefiend.hospitalManagement.dto.BloodGroupCountResponseEntity(p.bloodGroupType," + " Count(p)) FROM Patient p GROUP BY p.bloodGroupType")
     List<BloodGroupCountResponseEntity> counteachBloodGroupTypeDto();
 
     //problem
