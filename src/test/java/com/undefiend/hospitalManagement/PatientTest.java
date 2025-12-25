@@ -113,4 +113,13 @@ public class PatientTest {
         System.out.println(rowsUpdate);
     }
 
+
+    @Test
+    public void buildTest(){
+        BloodGroupCountResponseEntity bloodGroupCountResponseEntity = new BloodGroupCountResponseEntity();
+        bloodGroupCountResponseEntity.setCount(1L);
+
+        BloodGroupCountResponseEntity bloodGroupCountResponseEntity1 = BloodGroupCountResponseEntity.builder().bloodGroupType(BloodGroupType.A_POSITIVE).build();
+    }
+
 }

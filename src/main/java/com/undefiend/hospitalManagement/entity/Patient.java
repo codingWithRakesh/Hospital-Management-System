@@ -2,14 +2,16 @@ package com.undefiend.hospitalManagement.entity;
 
 import com.undefiend.hospitalManagement.entity.type.BloodGroupType;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
+@Builder
 @Table(
         name = "patient",
         uniqueConstraints = {
@@ -20,6 +22,8 @@ import java.time.LocalDate;
                 @Index(name = "idx_patient_birth_date",columnList = "birth_date")
         }
 )
+@AllArgsConstructor
+@NoArgsConstructor
 public class Patient {
     @Override
     public String toString() {
@@ -48,4 +52,12 @@ public class Patient {
 
     @Enumerated(EnumType.STRING)
     private BloodGroupType bloodGroupType;
+
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "patient_insurance_id") //owning side
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient") //inverse side
+    @ToString.Exclude
+    private List<Appointment> appointments = new ArrayList<>();
 }

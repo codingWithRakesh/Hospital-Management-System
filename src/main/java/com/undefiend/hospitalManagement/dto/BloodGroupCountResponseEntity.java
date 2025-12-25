@@ -1,15 +1,13 @@
 package com.undefiend.hospitalManagement.dto;
 
 import com.undefiend.hospitalManagement.entity.type.BloodGroupType;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class BloodGroupCountResponseEntity {
     private BloodGroupType bloodGroupType;
     private Long count;
