@@ -25,4 +25,10 @@ public class InsuranceTest {
         Patient patient = insuranceService.assignInsuranceToPatient(insurance,1L);
         System.out.println(patient);
     }
+
+    @Test
+    public void testRemoveInsurance(){
+        Patient patient = insuranceService.removeInsuranceFromPatient(1L);
+        System.out.println(patient);
+    }
 }

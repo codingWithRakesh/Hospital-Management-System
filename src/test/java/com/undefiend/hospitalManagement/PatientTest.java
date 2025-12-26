@@ -31,7 +31,7 @@ public class PatientTest {
 
     @Test
     public void testTrans(){
-        Patient p1 = patientService.getPatientById(1L);
+        var p1 = patientService.getPatientById(1L);
         System.out.println(p1);
     }
 
