@@ -5,6 +5,8 @@ import com.undefiend.hospitalManagement.dto.LoginResponseDto;
 import com.undefiend.hospitalManagement.dto.SIgnUpResponseDto;
 import com.undefiend.hospitalManagement.dto.SignUpRequestDto;
 import com.undefiend.hospitalManagement.entity.User;
+import com.undefiend.hospitalManagement.exception.UserFoundException;
+import com.undefiend.hospitalManagement.exception.UserNotFoundException;
 import com.undefiend.hospitalManagement.repository.UserRepository;
 import com.undefiend.hospitalManagement.security.AuthUtil;
 import lombok.RequiredArgsConstructor;
@@ -38,11 +40,11 @@ public class AuthService {
         return new LoginResponseDto(token, user.getId());
     }
 
-    public SIgnUpResponseDto signup(SignUpRequestDto signUpRequestDto) {
+    public SIgnUpResponseDto signup(SignUpRequestDto signUpRequestDto) throws UserFoundException {
         User user = userRepository.findByUsername(signUpRequestDto.getUsername()).orElse(null);
 
         if(user != null){
-            throw new IllegalArgumentException("user alredy exist");
+            throw new UserFoundException("user alredy exist");
         }
 
         User newUser = User.builder()

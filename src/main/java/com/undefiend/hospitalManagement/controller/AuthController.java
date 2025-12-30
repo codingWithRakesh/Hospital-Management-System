@@ -4,6 +4,7 @@ import com.undefiend.hospitalManagement.dto.LoginRequestDto;
 import com.undefiend.hospitalManagement.dto.LoginResponseDto;
 import com.undefiend.hospitalManagement.dto.SIgnUpResponseDto;
 import com.undefiend.hospitalManagement.dto.SignUpRequestDto;
+import com.undefiend.hospitalManagement.exception.UserFoundException;
 import com.undefiend.hospitalManagement.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<SIgnUpResponseDto> signup(@RequestBody SignUpRequestDto signUpRequestDto){
+    public ResponseEntity<SIgnUpResponseDto> signup(@RequestBody SignUpRequestDto signUpRequestDto) throws UserFoundException {
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.signup(signUpRequestDto));
     }
 }
